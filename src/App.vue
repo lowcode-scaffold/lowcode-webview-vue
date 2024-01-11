@@ -1,5 +1,26 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
+import { getMaterialPath, runScript } from "./webview/service";
+
+const scriptRes = ref("");
+const materialPath = ref("");
+
+const handleRunScript = () => {
+  runScript<string>({
+    materialPath: localStorage.getItem("materialPath") || "",
+    script: "testScript",
+    params: "",
+  }).then((res) => {
+    scriptRes.value = res;
+  });
+};
+
+const handleGetMaterialPath = () => {
+  getMaterialPath().then((res) => {
+    materialPath.value = res;
+  });
+};
 </script>
 
 <template>
@@ -19,20 +40,20 @@ import HelloWorld from "./components/HelloWorld.vue";
   </div>
   <button
     class="mt-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+    @click="handleRunScript"
   >
     执行脚本
   </button>
-  <!-- {scriptRes &&
-  <div className="mt-4">脚本结果：{scriptRes}</div>
-  } -->
+  <div className="mt-4" v-if="scriptRes">脚本结果：{{ scriptRes }}</div>
   <button
     class="mt-4 flex rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+    @click="handleGetMaterialPath"
   >
     getMaterialPath
   </button>
-  <!-- {materialPath &&
-  <div className="mt-4">materialPath：{materialPath}</div> -->
-  }
+  <div className="mt-4" v-if="materialPath">
+    materialPath：{{ materialPath }}
+  </div>
 </template>
 
 <style lang="scss" scoped>
