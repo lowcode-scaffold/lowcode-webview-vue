@@ -8,6 +8,7 @@ module.exports = {
     "eslint:recommended",
     "@vue/typescript/recommended",
     "@vue/prettier",
+    "plugin:tailwindcss/recommended",
   ],
   parserOptions: {
     ecmaVersion: 2020,
@@ -39,5 +40,12 @@ module.exports = {
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "vue/valid-v-model": "off",
+    "tailwindcss/no-custom-classname": "off",
   },
+  overrides: [
+    {
+      files: ["*.vue"],
+      parser: "vue-eslint-parser",
+    },
+  ],
 };

@@ -12,6 +12,27 @@ import HelloWorld from "./components/HelloWorld.vue";
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <div
+    class="fw100 animate-bounce-alt animate-count-infinite animate-duration-1s text-5xl"
+  >
+    UnoCSS
+  </div>
+  <button
+    class="mt-4 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+  >
+    执行脚本
+  </button>
+  <!-- {scriptRes &&
+  <div className="mt-4">脚本结果：{scriptRes}</div>
+  } -->
+  <button
+    class="mt-4 flex rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+  >
+    getMaterialPath
+  </button>
+  <!-- {materialPath &&
+  <div className="mt-4">materialPath：{materialPath}</div> -->
+  }
 </template>
 
 <style lang="scss" scoped>
